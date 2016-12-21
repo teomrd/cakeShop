@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './cakeShopLogo.png';
 import './App.css';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import CakeTheme from './shared/themes/CakeTheme';
-import CakeList from './components/CakeList/CakeList';
+import CakeTheme from '../../shared/themes/CakeTheme';
+import CakesContainer from '../../containers/CakesContainer/CakesContainer';
 
 class App extends Component {
   /*
@@ -32,7 +32,7 @@ class App extends Component {
           <h4>Cakes and other flavours</h4>
         </div>
         <p className="App-intro">
-          <CakeList />
+          <CakesContainer />
         </p>
       </div>
     );
