@@ -1,31 +1,24 @@
 import { connect } from 'react-redux';
 import CakeList from '../../components/CakeList/CakeList';
+import { fetchCakes } from '../../actions/cakeActions/cakeActions';
 
 const mapStateToProps = (state) => ({
-  cakes: state.cakes,
+  cakes: state.entities.cakes,
+  loading: state.loading.cakes,
 });
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     initRequest: () => {
-//       dispatch(initRequest());
-//     },
-//     fetchNodes: () => {
-//       dispatch(fetchNodes());
-//     },
-//     toggleNode: (id) => {
-//       dispatch(toggleNode(id));
-//     },
-//     deleteNode: (id) => {
-//       dispatch(deleteNode(id));
-//     },
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  dispatch(fetchCakes());
+  return {
+    fetchCakes: () => {
+      dispatch(fetchCakes());
+    },
+  };
+};
 
 const CakesContainer = connect(
   mapStateToProps,
-  null,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 )(CakeList);
 
 export default CakesContainer;

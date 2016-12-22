@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import cakes from './cakes';
+import entities from './entities';
+import loading from './loading';
 
 const reducers = combineReducers({
-  cakes,
+  entities,
+  loading,
 })
 
 export default reducers;

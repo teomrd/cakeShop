@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './cakeShopLogo.png';
 import './App.css';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import CakeTheme from '../../shared/themes/CakeTheme';
 import CakesContainer from '../../containers/CakesContainer/CakesContainer';
+import CakeBar from '../../components/CakeBar/CakeBar';
 
 class App extends Component {
   /*
@@ -26,14 +26,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to CakeLovers</h2>
-          <h4>Cakes and other flavours</h4>
-        </div>
-        <p className="App-intro">
+        <CakeBar />
+        <div
+          style={{
+            marginTop: '64px',
+          }}
+        >
           <CakesContainer />
-        </p>
+        </div>
       </div>
     );
   }

@@ -1,18 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import App from './components/App/App';
 import './index.css';
 
-let store = createStore(reducers);
-console.log(store.getState());
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
-// const unsubscribe = store.subscribe(() =>
-//   console.log(store.getState())
-// );
+let store = createStore(
+  reducers,
+  applyMiddleware(
+    thunkMiddleware,
+  ),
+);
 
 render(
   <Provider store={store}>

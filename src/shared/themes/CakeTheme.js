@@ -4,9 +4,9 @@ import zIndex from 'material-ui/styles/zIndex';
 export default {
   spacing: Spacing,
   zIndex,
-  fontFamily: 'Roboto, sans-serif',
+  fontFamily: 'Raleway, sans-serif',
   palette: {
-    primary1Color: '#303F9F',
+    primary1Color: '#4E342E',
     primary2Color: '#f5f5f5',
     primary3Color: '#333333',
     accent1Color: '#f44336',
