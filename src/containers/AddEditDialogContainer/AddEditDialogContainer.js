@@ -1,19 +1,15 @@
 import { connect } from 'react-redux';
-import CakeList from '../../components/CakeList/CakeList';
-import { fetchCakes, editCake, cancelCake, saveCake } from '../../actions/cakeActions/cakeActions';
+import AddEditDialog from '../../components/CakeList/AddEditCakesDialog/AddEditDialog';
+import { editCake, cancelCake, saveCake } from '../../actions/cakeActions/cakeActions';
 
 const mapStateToProps = (state) => ({
-  cakes: state.entities.cakes,
-  loading: state.loading.cakes,
-  manageCakes: state.manageCakes,
+  mode: state.manageCakes.mode,
+  title: state.manageCakes.title,
+  description: state.manageCakes.description,
 });
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(fetchCakes());
   return {
-    fetchCakes: () => {
-      dispatch(fetchCakes());
-    },
     editCake: (title, description) => {
       dispatch(editCake(title, description));
     },
@@ -26,9 +22,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const CakesContainer = connect(
+const AddEditDialogContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CakeList);
+)(AddEditDialog);
 
-export default CakesContainer;
+export default AddEditDialogContainer;

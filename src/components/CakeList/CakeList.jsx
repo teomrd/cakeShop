@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import StarBorder from 'material-ui/svg-icons/editor/mode-edit';
 import SearchContainer from '../../containers/SearchContainer/SearchContainer';
 import CircularProgress from 'material-ui/CircularProgress';
+import AddEditDialogContainer from '../../containers/AddEditDialogContainer/AddEditDialogContainer';
+import AddContainer from '../../containers/AddContainer/AddContainer';
 
 const styles = {
   root: {
@@ -18,15 +18,13 @@ const styles = {
     width: '100%',
     overflowY: 'auto',
   },
-  addButton: {
-    marginRight: 20,
-    position: 'fixed',
-    bottom: '15px',
-    right: '15px',
-  },
 };
 
-const CakeList = ({ cakes, loading }) => (
+const CakeList = ({
+  cakes,
+  loading,
+  editCake,
+}) => (
   loading ?
   <div
     style={{
@@ -48,33 +46,35 @@ const CakeList = ({ cakes, loading }) => (
       cellHeight={180}
       style={styles.gridList}
     >
-      <Subheader>Cakes</Subheader>
-      {Object.keys(cakes).map((cake) => (
-        <GridTile
-          key={cake}
-          title={cakes[cake].title}
-          subtitle={<span><b>{cakes[cake].desc}</b></span>}
-          actionIcon={
-            <IconButton
-              onTouchTap={() => { }}
-            >
-              <StarBorder color="white" />
-            </IconButton>
-          }
-        >
-          <img src={cakes[cake].image} role="presentation"/>
-        </GridTile>
-      ))}
+      <Subheader>{Object.keys(cakes).length ? 'Cakes' : 'No Cakes found :('}</Subheader>
+      {
+        Object.keys(cakes).map((cake) => (
+          <GridTile
+            key={cake}
+            title={cakes[cake].title}
+            subtitle={<span><b>{cakes[cake].desc}</b></span>}
+            actionIcon={
+              <IconButton
+                onTouchTap={() => { editCake(cakes[cake].title, cakes[cake].desc) }}
+              >
+                <StarBorder color="white" />
+              </IconButton>
+            }
+          >
+            <img src={cakes[cake].image} role="presentation"/>
+          </GridTile>
+        ))
+      }
     </GridList>
-    <FloatingActionButton style={styles.addButton}>
-      <ContentAdd />
-    </FloatingActionButton>
+    <AddContainer />
+    <AddEditDialogContainer />
   </div>
 );
 
 CakeList.propTypes = {
   cakes: PropTypes.object,
   loading: PropTypes.bool,
+  manageCakes: PropTypes.object,
 }
 
 CakeList.defaultProps = {

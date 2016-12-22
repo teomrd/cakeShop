@@ -5,6 +5,7 @@ const cakes = (state = {}, action) => {
   console.log('action', action);
   switch (action.type) {
     case actionTypes.FETCH_CAKES_SUCCESS:
+    case actionTypes.SAVE_CAKE:
       if (action.response
       && action.response.entities
       && action.response.entities.cakes) {

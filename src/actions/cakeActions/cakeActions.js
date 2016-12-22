@@ -3,6 +3,31 @@ import { normalize } from 'normalizr';
 import { Schemas } from '../../schemas/cake';
 import uhttp from 'uhttp';
 
+export const editCake = (title, description) => ({
+  type: actionTypes.EDIT_CAKE,
+  title,
+  description,
+});
+
+export const addCake = () => ({
+  type: actionTypes.ADD_CAKE,
+});
+
+export const cancelCake = () => ({
+  type: actionTypes.CANCEL_CAKE,
+});
+
+export const saveCake = (title, description) => (dispatch) => {
+  const cake = {
+    title,
+    desc: description,
+  };
+  dispatch({
+    type: actionTypes.SAVE_CAKE,
+    response: normalize(cake, Schemas.CAKE),
+  })
+};
+
 export const fetchCakes = () => (dispatch) => {
   dispatch({
     type: actionTypes.FETCH_CAKES,

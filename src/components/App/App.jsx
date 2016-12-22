@@ -29,7 +29,8 @@ class App extends Component {
         <CakeBar />
         <div
           style={{
-            marginTop: '64px',
+            margin: '64px auto',
+            maxWidth: '764px',
           }}
         >
           <CakesContainer />
