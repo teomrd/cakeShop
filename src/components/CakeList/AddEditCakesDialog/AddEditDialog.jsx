@@ -70,7 +70,7 @@ class AddEditDialog extends React.Component {
     ];
     return(
       <Dialog
-        title="Edit Cake"
+        title={this.props.mode === 'editing' ? 'Edit cake' : 'Add cake'}
         actions={actions}
         modal={true}
         open={this.props.mode !== 'closed'}

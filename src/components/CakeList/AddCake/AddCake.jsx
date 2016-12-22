@@ -4,10 +4,9 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const styles = {
   addButton: {
-    marginRight: 20,
     position: 'fixed',
-    bottom: '15px',
-    right: '15px',
+    bottom: '25px',
+    right: '25px',
   },
 };
 
