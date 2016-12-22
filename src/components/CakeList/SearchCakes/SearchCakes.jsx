@@ -17,6 +17,8 @@ class CakeList extends React.Component {
     this.setState({
       value: event.target.value,
     });
+    //Get simultaneously results!
+    this.props.searchCakes(event.target.value);
   }
 
   /*
