@@ -2,6 +2,7 @@
   "name": "cakeShop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://mironidis.com/dojo/cakeShop",
   "devDependencies": {
     "react-scripts": "0.8.4"
   },
