@@ -6,6 +6,7 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import SearchContainer from '../../containers/SearchContainer/SearchContainer';
+import CircularProgress from 'material-ui/CircularProgress';
 
 const styles = {
   root: {
@@ -25,7 +26,22 @@ const styles = {
   },
 };
 
-const CakeList = ({ cakes }) => (
+const CakeList = ({ cakes, loading }) => (
+  loading ?
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      height: '100vh',
+    }}
+  >
+    <CircularProgress
+      style={{
+        width: '100%',
+      }}
+    />
+  </div>
+  :
   <div style={styles.root}>
     <SearchContainer />
     <GridList
@@ -58,10 +74,12 @@ const CakeList = ({ cakes }) => (
 
 CakeList.propTypes = {
   cakes: PropTypes.object,
+  loading: PropTypes.bool,
 }
 
 CakeList.defaultProps = {
   cakes: {},
+  loading: false,
 }
 
 export default CakeList;
